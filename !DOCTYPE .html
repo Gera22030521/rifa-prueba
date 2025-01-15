@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aparta tus boletos</title>
+    <style>
+        /* Estilo básico para la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .boletos {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aparta tus boletos para la rifa</h1>
+    <p>Selecciona los boletos que deseas apartar y paga a través de WhatsApp.</p>
+
+    <!-- Lista de boletos disponibles -->
+    <div class="boletos">
+        <label for="boletos">Selecciona tus boletos (números separados por coma):</label>
+        <input type="text" id="boletos" name="boletos" placeholder="Ejemplo: 03455, 05486, 05542" required>
+    </div>
+
+    <!-- Botón para redirigir a WhatsApp -->
+    <a id="whatsapp-link" href="" target="_blank">
+        <button id="enviar-whatsapp">Apartar boletos por WhatsApp</button>
+    </a>
+
+    <script>
+        document.getElementById('enviar-whatsapp').onclick = function () {
+            // Obtener los números de boletos
+            var boletos = document.getElementById('boletos').value.trim();
+
+            // Verificar que los boletos sean válidos
+            if (boletos) {
+                // Crear el mensaje que se enviará a WhatsApp
+                var mensaje = Hola,%20Aparte%20boletos%20de%20la%20rifa!!%0A +
+                    N%C2%B0209%20%24100,000%20MXN!!%0A%0A +
+                    %F0%9D%84%90%20*50%20BOLETOS*%3A%0A +
+                    boletos.split(',').map(boleto => boleto.trim()).join('%0A') + %0A%0A +
+                    *Nombre*%3A%20GERARDO%20PEREZ%20MARTINEZ%0A%0A +
+                    Sorteo%20super%20express%20de%201%20d%C3%ADa%20pidiendo%20y%20pagando%20por%20favor%20checa%20bien%20que%20no%20se%20te%20regres%C3%A9%20tu%20traspaso....gracias%20y%20feliz%20a%C3%B1o...%0A%0A +
+                    %F0%9F%99%A51%20BOLETO%20POR%20%242%0A10%20BOLETOS%20POR%20%2420%0A20%20BOLETOS%20POR%20%2440%0A30%20BOLETOS%20POR%20%2460%0A50%20BOLETOS%20POR%20%24100%0A100%20BOLETOS%20POR%20%24200%0A200%20BOLETOS%20POR%20%24400%0A%0A +
+                    %F0%9F%91%AF*CUENTAS%20DE%20PAGO%20AQU%C3%8D*%3A%20www.rifaslatrocka.com%2Fpagos%0A%0A +
+                    *Celular*%3A%207299638633%0A%0A +
+                    El%20siguiente%20paso%20es%20enviar%20foto%20del%20comprobante%20de%20pago%20por%20aqui;
+
+                // Generar el enlace de WhatsApp
+                var whatsappURL = https://wa.me/+527299638633?text=${mensaje};
+                document.getElementById('whatsapp-link').href = whatsappURL;
+            } else {
+                alert('Por favor, ingresa los números de los boletos');
+            }
+        };
+    </script>
+
+</body>
+</html>
